@@ -1,5 +1,12 @@
-import express from 'express';  
+dotenv.config();
+import express from 'express';
+import dotenv from "dotenv";  
 import cors from 'cors';
+import connectDB from "./config/db.js";
+
+const port = process.env.PORT || 3000;
+
+connectDB();
 
 const app = express();
 
@@ -12,6 +19,6 @@ app.get('/', (req, res) => {
   res.send({ fruits: ['apple', 'banana', 'cherry'] });
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
